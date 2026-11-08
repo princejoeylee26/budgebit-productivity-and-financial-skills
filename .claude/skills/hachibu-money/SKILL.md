@@ -18,7 +18,7 @@ BudgeBit (MCP server `Budgebit`) is the only source of truth. Every figure in an
 0. No BudgeBit tools → follow [references/getting-budgebit.md](references/getting-budgebit.md). Never estimate money without data.
 1. `Budgebit:get_context` first (today, timezone, **base currency**). Months are `YYYY-MM-01`, amounts you pass are plain major units (`"1500.00"`).
 2. Load money memory if `hachibu-memory` is installed (its `## Money` section: goals, rules, pay dates). Treat it as a hint; live data wins.
-3. `propose_*` only drafts. Say "Drafted. Confirm it in the BudgeBit app." Never claim money was moved, paid, saved or budgeted.
+3. `propose_*` only drafts. Say "Drafted. Confirm it in BudgeBit › Assistant." Never claim money was moved, paid, saved or budgeted.
 4. Never delete, archive, share or move money. Never give regulated investment, tax or legal advice; say when a professional should be asked.
 5. No account numbers or secrets in answers or memory.
 6. Short: answer first in one line with the number and its source tool, then up to ~8 lines of detail.

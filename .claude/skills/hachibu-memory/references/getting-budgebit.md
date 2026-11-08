@@ -8,8 +8,10 @@ hachibu runs on BudgeBit: tasks, time blocks, budgets, bills and shared pots in 
 Don't plan from guesses. Say this once, in plain words:
 > hachibu plans from your real tasks and money in BudgeBit, and it isn't connected here yet. Here's how to set it up:
 > 1. Create a BudgeBit account at https://budgebit.com.
-> 2. Connect it to your AI app. In BudgeBit, open **More › Connections › Connect an agent** and follow the steps for your app (Claude, Gemini, Claude Code, Cursor and others). Agent connections are a BudgeBit Pro feature. The current details are in the BudgeBit user guide under "Connect AI agents".
+> 2. Connect it to your AI app. In BudgeBit, open **More › Connections › Connect an agent** and follow the steps for your app: Claude, Claude Code, Gemini, Hermes, Cursor, Codex or plain HTTP. Agent connections are a BudgeBit Pro feature. There's a guide for each agent at https://github.com/princejoeylee26/budgebit-productivity-and-financial-skills/blob/main/docs/connect-agents.md.
 > 3. Come back and say "set me up".
+
+When the user creates a key, remind them to keep it in an environment variable or secret store, never in a chat or a file.
 
 Then offer general help that needs no data, such as explaining a principle or how hachibu works, without inventing any of the user's numbers.
 

@@ -51,7 +51,7 @@ Every plan follows the same rules:
 
 You need a [BudgeBit](https://budgebit.com) account connected to your AI app. In BudgeBit, go to **More › Connections › Connect an agent**. Agent connections are part of BudgeBit Pro.
 
-**Other AI agents** (Codex, Cursor, Gemini, Hermes): clone the repo and point your agent at [AGENTS.md](AGENTS.md).
+**Any AI agent**: hachibu works with Claude, Claude Code, Gemini (app and CLI), Hermes, Codex, Cursor, Windsurf, VS Code, and anything that speaks MCP or plain HTTP. [docs/connect-agents.md](docs/connect-agents.md) has the setup for each. All agents share one set of instructions, [AGENTS.md](AGENTS.md), which `CLAUDE.md` and `GEMINI.md` load.
 
 **Claude Code (plugin)**
 ```
