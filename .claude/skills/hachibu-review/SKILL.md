@@ -28,7 +28,9 @@ Copy and work through:
 - [ ] Compute: done/planned by list, by energy type, by weekday; overdue trend
 - [ ] Coach self-check: what did hachibu plan vs what got done? (see below)
 - [ ] Draft: 1 kaizen, next week's 3 vital few, heavy days spotted
+- [ ] Priority balance: time and done tasks per top-3 priority (map lists to priorities)
 - [ ] Ask: "What was most and least useful from me this week?"
+- [ ] Update check (references/updates.md), one line only if newer
 - [ ] Draft memory updates (Weekly log line, Coaching log, capacity) → confirm
 ```
 
@@ -38,6 +40,7 @@ Output format:
 Strong: <list or type that held> · Slipped: <list or type> (cause: muri on Fri)
 Money: Food warn 78% · others ok (budget_status)
 Coach check: planned 6 Peak blocks, 4 done → next week plan 4–5
+Priorities: Health ✓ 9 blocks · Business ✓ 6 · Family ⚠ 1. Protect one family slot
 Next week's vital few: 1) … 2) … 3) …
 Heavy days: Wed (office + long run) → keep it to 1 must-do
 Kaizen: <one small change>
@@ -54,7 +57,7 @@ What was most and least useful from me this week?
 ## Monthly review (kakeibo + life)
 1. Everything in the weekly review, over the month (tasks in 1–2 week windows).
 2. Kakeibo four questions with `month_summary` (`months: 3`), `spending_by_category`, `budget_status`, `list_pots`. Use `hachibu-money` workflows if installed.
-3. Goals: progress on goals in Memory · Context (task evidence only).
+3. Goals: progress on goals in Memory · Context (task evidence only). Ask "Are these still your top 3 priorities?" and draft a change if not.
 4. 5S suggestion: lists or categories that could be tidied (the user archives in the app).
 5. One kaizen for life, one for money (the only place two are allowed: one per domain).
 6. Draft next month's budget changes only if the user asks (`hachibu-money` workflow 3).
@@ -67,6 +70,7 @@ What was most and least useful from me this week?
 
 ## References
 - [references/budgebit-tools.md](references/budgebit-tools.md): read before any tool call you're unsure about.
+- [references/updates.md](references/updates.md): read for the update check at the end of the weekly review.
 
 ## End
 Draft the memory updates in one `propose_task_update` per subtask touched; list them in one line each. Remind the user where to confirm.

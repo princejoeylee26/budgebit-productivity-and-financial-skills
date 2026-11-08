@@ -12,7 +12,7 @@ Thank you for helping the coach get wiser. Every change must keep three promises
 3. Make the smallest change that fixes it. SKILL.md stays under 500 lines; detail goes in `references/`.
 4. If you edit `shared/`, run `scripts/sync-shared.sh`.
 5. Run `python3 scripts/check_skills.py`. It must pass.
-6. Bump the version in `.claude-plugin/marketplace.json` and add a `CHANGELOG.md` entry (what and why).
+6. Bump `VERSION` and `.claude-plugin/marketplace.json`, run `scripts/sync-shared.sh`, and add a `CHANGELOG.md` entry (what and why).
 7. Open the PR with the eval case and, if you ran it, an anonymised result in `evals/results/`.
 
 ## Writing style

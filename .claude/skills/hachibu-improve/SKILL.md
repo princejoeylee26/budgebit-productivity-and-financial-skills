@@ -27,9 +27,18 @@ Copy and work through:
 - [ ] Write or update an eval case in evals/cases/ (format: evals/README.md)
 - [ ] Make the smallest change that fixes it (Gall's law)
 - [ ] Run checks: python3 scripts/check_skills.py (frontmatter, links, shared-file sync, personal-data scan)
-- [ ] Bump the version (semver) in .claude-plugin/marketplace.json and add a CHANGELOG.md entry: what and why
+- [ ] Bump the version (semver) in VERSION and .claude-plugin/marketplace.json, run scripts/sync-shared.sh, and add a CHANGELOG.md entry: what and why
 - [ ] Branch, commit, open a PR with the eval and the reason
 ```
+
+## Releasing (maintainers)
+1. Bump `VERSION`, then run `scripts/sync-shared.sh`. It stamps the version into every skill's `references/updates.md`, so installed copies can tell when they're behind.
+2. Set the same version in `.claude-plugin/marketplace.json`, and add a CHANGELOG entry whose first bullet is the change users will care about most. The update check shows that bullet.
+3. Merge to main, then push a tag `v<version>`. CI builds the zips for Claude.ai and attaches them to a GitHub Release.
+4. Installed copies see the new version at their next update check ([references/updates.md](references/updates.md)).
+
+## New BudgeBit tools
+When BudgeBit adds tools (the update check flags them), add them to `shared/budgebit-tools.md`. Then use them in the relevant workflow, keeping the draft-only and never-move-money rules, add an eval, and release a minor version.
 
 ## Versioning
 - **patch**: wording, typo, clearer example.

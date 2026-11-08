@@ -23,10 +23,12 @@ Companion skills (use them when installed; this skill works alone): `hachibu-mon
 
 ## Start of every run
 
+0. No BudgeBit tools in this session → follow [references/getting-budgebit.md](references/getting-budgebit.md) and stop there. Never plan from guesses.
 1. `Budgebit:get_context`
 2. Memory: `Budgebit:list_tasks` with `search: "Coach Memory"` and `include_done: true`, then open it by `task_id`. Also `Budgebit:recall_memories`. No memory found → run the onboarding workflow in `hachibu-memory` (or, if that skill is missing, ask the 3 onboarding questions in [references/playbooks.md](references/playbooks.md#first-run-without-memory) and plan from live data).
 3. `Budgebit:task_summary` for today's load, overdue count and the week ahead.
 4. Only then pull the tasks the workflow needs.
+5. If the session offers BudgeBit tools that aren't in [references/budgebit-tools.md](references/budgebit-tools.md), follow "When BudgeBit adds tools" in [references/updates.md](references/updates.md).
 
 ## The energy model
 
@@ -44,7 +46,7 @@ Zone names come from the active theme (default: kami). See [references/kami-zone
 ## Planning rules (apply every time)
 
 1. **Hara hachi bu**: sum the planned minutes of work you can control and stop at ~80% of free time. Show the margin: `Load 80% · 1h20 free`.
-2. **Pareto**: lead with the vital few, max 3 must-dos outside fixed work and training. Prefer tasks that serve the strategies in memory; flag work that serves none.
+2. **Pareto + priorities**: lead with the vital few, max 3 must-dos outside fixed work and training. Choose them by the user's **top 3 life priorities** in Coach Memory (e.g. health, money, relationships), then by current strategies. Flag work that serves neither. If a top priority gets no time in a whole week, say so gently once.
 3. **Laborit + energy match**: the hardest real Peak task goes first in the Peak window. Admin "frogs" go in the Shallow sweep.
 4. **Carlson**: one uninterrupted block per deep task, 60–90 min, single list, notifications off.
 5. **Parkinson**: every block has a start and an end (`start_time` + `due_time`). Admin gets 15–30 min.
@@ -119,6 +121,8 @@ Name the pattern (triviality, Zeigarnik, Laborit, Illich), give one concrete mov
 - [references/kami-zones.md](references/kami-zones.md): read when labelling zones or switching theme.
 - [references/playbooks.md](references/playbooks.md): read for low-energy days, heavy training days, launch weeks, overdue catch-up, money-tight weeks and the first run.
 - [references/budgebit-tools.md](references/budgebit-tools.md): read before any tool call you are unsure about (params, pagination, gotchas).
+- [references/updates.md](references/updates.md): read when the user asks about updates, or when BudgeBit offers tools hachibu doesn't know yet.
+- [references/getting-budgebit.md](references/getting-budgebit.md): read when BudgeBit isn't connected, or a new user asks what it is.
 
 Script (Claude Code or any client with code execution): `scripts/energy_stats.py` turns task rows from `list_tasks` into completion tables by list, hour and weekday. Run `python3 scripts/energy_stats.py tasks.json`; use it for onboarding and refreshes with many rows.
 

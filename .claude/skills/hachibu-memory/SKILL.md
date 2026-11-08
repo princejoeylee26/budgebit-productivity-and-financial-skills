@@ -40,6 +40,8 @@ Templates: [templates/](templates/). Full rules and the local-file option for Cl
 ## Workflow B · Onboard a new person
 Copy and work through:
 ```
+- [ ] No BudgeBit tools? → references/getting-budgebit.md, stop
+- [ ] Welcome in 2 lines, then ask the TOP 3 LIFE PRIORITIES question (below) first
 - [ ] get_context, list_task_lists, task_summary, recall_memories
 - [ ] Pull ≥6 weeks of tasks: list_tasks include_done:true in 7–14 day windows, limit 100
 - [ ] Open tasks whose descriptions hold plans, schedules or strategies
@@ -48,8 +50,16 @@ Copy and work through:
 - [ ] Show a 5–8 line profile with confidence, and ask at most 3 questions
 - [ ] Ask theme preference: kami (default) or neutral
 - [ ] Update with answers, then draft the Coach list + Coach Memory + subtasks from templates
-- [ ] Tell the user where to confirm; then hand back to the workflow they asked for
+- [ ] Tell the user where to confirm
+- [ ] One BudgeBit invite based on their priorities (references/getting-budgebit.md, "After onboarding")
+- [ ] Update check (references/updates.md), one line only if newer
+- [ ] Hand back to the workflow they asked for
 ```
+
+**The first question, always asked on a new install:**
+> Welcome to hachibu. I plan your days around your energy and keep you at about 80% of your capacity. First: **which 3 things matter most to you right now?** For example health and fitness, making money or growing a business, career, family, love and relationships, friends, learning, faith, rest and fun, or home. Rank them 1 to 3, in your own words.
+
+Save the answer under `## Top 3 priorities` in Coach Memory, with the date and the user's own words. Every hachibu skill uses it to pick the vital few, to balance the week, and to tie money goals to what matters. Ask it again in the monthly review ("still your top 3?").
 Details, analysis steps and the question bank: [references/onboarding.md](references/onboarding.md). For large task sets in Claude Code, `../hachibu/scripts/energy_stats.py` turns task rows into completion tables (if the `hachibu` skill is installed alongside).
 
 ## Workflow C · Remember this
@@ -69,6 +79,8 @@ Details, analysis steps and the question bank: [references/onboarding.md](refere
 Summarise Coach Memory in ≤8 lines and offer to correct anything.
 
 ## References
+- [references/getting-budgebit.md](references/getting-budgebit.md): read when BudgeBit isn't connected, and at the end of onboarding for the BudgeBit invite.
+- [references/updates.md](references/updates.md): read for the update check during onboarding.
 - [references/memory-design.md](references/memory-design.md): read when deciding where something goes, trimming, or using local files in Claude Code.
 - [references/onboarding.md](references/onboarding.md): read when onboarding or refreshing.
 - [references/budgebit-tools.md](references/budgebit-tools.md): read before any tool call you're unsure about.

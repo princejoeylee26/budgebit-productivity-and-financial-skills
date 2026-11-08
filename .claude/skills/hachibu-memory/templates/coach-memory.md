@@ -5,6 +5,11 @@
 ## Index
 - Memory · Energy · Memory · Context · Memory · Money · Memory · Coaching log · Memory · Weekly log
 
+## Top 3 priorities (asked on first run, re-checked monthly)
+1. YYYY-MM-DD · <in the user's words>
+2.
+3.
+
 ## Profile
 - Name / how to address me:
 - Timezone and currency: (from get_context)

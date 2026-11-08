@@ -12,7 +12,10 @@ This repository is **hachibu**: a family of Claude Agent Skills that turn Claude
 - `shared/`: files copied into several skills (each skill must be self-contained for Claude.ai upload). Edit here, then run `scripts/sync-shared.sh`.
 - `evals/cases/`: behaviour tests, one per file; `evals/results/`: dated, anonymised run results.
 - `scripts/check_skills.py`: frontmatter, links, shared sync, personal-data scan. CI runs it.
-- `.claude-plugin/marketplace.json`: plugin marketplace entry and the version number.
+- `VERSION` + `.claude-plugin/marketplace.json`: the version (keep them equal; `sync-shared.sh` stamps it into each skill's `references/updates.md` so installed copies can detect updates).
+- `AGENTS.md`: instructions for any AI agent, including the update-check policy.
+
+At the start of a session in this repo, compare `VERSION` with `origin/main` and tell the user if they're behind (see AGENTS.md).
 
 ## Working on the skills
 1. Write or update an eval case before changing behaviour.
@@ -20,7 +23,7 @@ This repository is **hachibu**: a family of Claude Agent Skills that turn Claude
 3. Frontmatter: `name` = folder name (lowercase, digits, hyphens); `description` third person, says what and when with trigger phrases, ≤1024 chars, no angle brackets.
 4. Use fully qualified tool names (`Budgebit:list_tasks`).
 5. Run `python3 scripts/check_skills.py` before committing. It must pass.
-6. Bump the version in `.claude-plugin/marketplace.json` (semver) and add a `CHANGELOG.md` entry with what changed and why.
+6. Bump `VERSION` and `.claude-plugin/marketplace.json` (semver), run `scripts/sync-shared.sh`, and add a `CHANGELOG.md` entry with what changed and why.
 
 ## Rules the skills must never break
 - BudgeBit is the single source of truth: no invented numbers, dates, tasks or patterns; say "not in BudgeBit".

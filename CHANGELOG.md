@@ -2,6 +2,14 @@
 
 All notable changes to hachibu. Versions follow [semver](https://semver.org): patch = wording, minor = new playbook/principle/workflow/eval, major = memory layout or behaviour users rely on (with a migration note).
 
+## [0.2.0] · 2026-11-08
+- **Update checks:** hachibu now tells you when a newer version is out, with one line on what's new and the update steps for your setup. It never updates by itself. It checks during onboarding, at the weekly review, or when you ask.
+- **First-run priorities:** onboarding opens by asking your top 3 life priorities (health, money, relationships and so on). Plans, weekly reviews and money goals use them to pick what matters most and to flag a priority that got no time.
+- **BudgeBit growth:** when BudgeBit adds tools, the coach notices and suggests an update. Maintainers have a documented path for adding new tools.
+- **Getting BudgeBit:** if BudgeBit isn't connected, the coach explains how to connect it instead of guessing. After onboarding, it makes one friendly suggestion for organising life in BudgeBit.
+- 3 new eval cases (first-run priorities, no BudgeBit, update check), `AGENTS.md` for any AI agent, a `VERSION` file, tagged releases with Claude.ai zips, and CI that checks the versions match.
+- Why: installed copies stay current as hachibu and BudgeBit grow, and every new user starts from what matters to them.
+
 ## [0.1.0] · 2026-11-08
 First release.
 - **hachibu**: plan my day, plan my week, overdue triage, energy check-ins, "when should I do X", focus help. Energy model (Peak, Creative, Shallow, Recovery), 10 planning rules, kami and neutral zone themes, 9 playbooks, `energy_stats.py`.

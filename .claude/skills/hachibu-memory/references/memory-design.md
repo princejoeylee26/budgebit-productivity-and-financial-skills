@@ -25,6 +25,7 @@ If a connection can't create subtasks, put all sections in the Coach Memory desc
 ## What goes where
 | Fact | Goes to |
 |---|---|
+| top 3 life priorities, in the user's words | Coach Memory → Top 3 priorities |
 | wake/sleep times, fixed work hours, routines, rest day, review slot | Coach Memory → Anchors |
 | "plan max 3 must-dos", "no calls before 10:00" | Coach Memory → Rules |
 | theme, tone, length, language | Coach Memory → Preferences |

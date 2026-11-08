@@ -49,7 +49,9 @@ Every plan follows the same rules:
 
 ## Install
 
-You need a BudgeBit account with the **BudgeBit connector** enabled in Claude.
+You need a [BudgeBit](https://budgebit.com) account connected to your AI app. In BudgeBit, go to **More › Connections › Connect an agent**. Agent connections are part of BudgeBit Pro.
+
+**Other AI agents** (Codex, Cursor, Gemini, Hermes): clone the repo and point your agent at [AGENTS.md](AGENTS.md).
 
 **Claude Code (plugin)**
 ```
@@ -59,11 +61,23 @@ You need a BudgeBit account with the **BudgeBit connector** enabled in Claude.
 
 **Claude Code (clone)**: clone this repo and open Claude Code inside it. The skills in `.claude/skills/` load automatically.
 
-**Claude.ai and mobile**: run `scripts/package.sh` or download the zips from Releases. Then upload each `dist/<skill>.zip` under **Settings → Capabilities → Skills**. Start with `hachibu` and `hachibu-memory`.
+**Claude.ai and mobile**: download the zips from the latest [Release](https://github.com/princejoeylee26/budgebit-productivity-and-financial-skills/releases), or build them with `scripts/package.sh`. Then upload each `dist/<skill>.zip` under **Settings → Capabilities → Skills**. Start with `hachibu` and `hachibu-memory`.
 
 ## First run
 
-Say **"set me up"**. hachibu reads about 6 weeks of your BudgeBit tasks and a summary of your money, then shows you what it noticed, with how confident it is. It asks you at most 3 questions. Then it drafts your Coach Memory in BudgeBit for you to confirm in the app.
+Say **"set me up"**. hachibu starts by asking which **3 things matter most to you** right now, such as health, making money, family, love, learning or faith. Then it reads about 6 weeks of your BudgeBit tasks and a summary of your money, and shows you what it noticed, with how confident it is. It asks at most 3 more questions and drafts your Coach Memory in BudgeBit for you to confirm. If you haven't connected BudgeBit yet, it shows you how.
+
+## Staying up to date
+
+hachibu and BudgeBit both keep improving. During onboarding, at your weekly review, or whenever you ask "update hachibu", the coach checks for a newer version. If there is one, it tells you in one line what's new and how to update. It never updates on its own.
+
+| Setup | Update |
+|---|---|
+| Claude Code plugin | `/plugin marketplace update hachibu` |
+| Cloned repo (any agent) | `git pull` |
+| Claude.ai, Desktop or mobile | Download the zips from the latest [Release](https://github.com/princejoeylee26/budgebit-productivity-and-financial-skills/releases) and re-upload them |
+
+Your memory lives in BudgeBit, so updates never touch it. Using another AI agent? See [AGENTS.md](AGENTS.md).
 
 ## Privacy
 

@@ -6,6 +6,7 @@
 3. Shared files: copies match shared/ (run scripts/sync-shared.sh to fix).
 4. Personal data: no emails, phone numbers, long digit runs, or blocked terms.
 5. Size: SKILL.md bodies stay under 500 lines.
+6. Versions: VERSION, marketplace.json, updates.md and CHANGELOG agree.
 Exit code 1 on any failure.
 """
 import pathlib
@@ -84,6 +85,20 @@ def check_shared():
                 errors.append(f"{copy.relative_to(ROOT)}: out of sync with shared/ (run scripts/sync-shared.sh)")
 
 
+def check_versions():
+    import json
+    version = (ROOT / "VERSION").read_text().strip()
+    m = json.loads((ROOT / ".claude-plugin" / "marketplace.json").read_text())
+    found = {m.get("metadata", {}).get("version")} | {p.get("version") for p in m.get("plugins", [])}
+    if found != {version}:
+        errors.append(f"marketplace.json versions {found} != VERSION {version}")
+    for f in SKILLS.glob("*/references/updates.md"):
+        if f"**Installed version: {version}**" not in f.read_text(encoding="utf-8"):
+            errors.append(f"{f.relative_to(ROOT)}: installed version != VERSION (run scripts/sync-shared.sh)")
+    if f"## [{version}]" not in (ROOT / "CHANGELOG.md").read_text(encoding="utf-8"):
+        errors.append(f"CHANGELOG.md has no entry for {version}")
+
+
 def load_terms(name):
     f = ROOT / "scripts" / name
     if not f.exists():
@@ -119,6 +134,7 @@ def main():
     check_skills()
     check_links()
     check_shared()
+    check_versions()
     check_personal_data()
     if errors:
         print("✗ checks failed:")

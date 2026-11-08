@@ -37,7 +37,7 @@ Best focus: 13:30–16:30 on home days (14 of 18 build tasks done here) · med
 Weekends slip: 40% routine completion Sat vs 92% weekdays · high
 Overdue pile: marketing/admin, 8 due on Fri 6 Nov · high
 ```
-Then ask at most 3 questions from the bank, picking the ones with the lowest confidence:
+The top 3 priorities question has already been asked at the start (see SKILL.md). Now ask at most 3 more questions from the bank, picking the ones with the lowest confidence:
 - What time do you usually wake and sleep? Is the midday block a nap or night-shift sleep?
 - What are your fixed work hours or shifts, and which days are office days?
 - When do you feel sharpest for hard thinking?

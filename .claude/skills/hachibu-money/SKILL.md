@@ -15,6 +15,7 @@ BudgeBit (MCP server `Budgebit`) is the only source of truth. Every figure in an
 
 ## Non-negotiables
 
+0. No BudgeBit tools → follow [references/getting-budgebit.md](references/getting-budgebit.md). Never estimate money without data.
 1. `Budgebit:get_context` first (today, timezone, **base currency**). Months are `YYYY-MM-01`, amounts you pass are plain major units (`"1500.00"`).
 2. Load money memory if `hachibu-memory` is installed (its `## Money` section: goals, rules, pay dates). Treat it as a hint; live data wins.
 3. `propose_*` only drafts. Say "Drafted. Confirm it in the BudgeBit app." Never claim money was moved, paid, saved or budgeted.
@@ -78,8 +79,9 @@ Source: budget_status, list_transactions (1–14 Nov).
 
 ### 6 · Savings and goals
 1. `list_accounts` (savings types), `list_pots` (targets, target dates), `month_summary` for net savings per month.
-2. For each goal: target, current, monthly pace needed = (target − current) ÷ months left; compare with the last 3 months' net.
-3. One line per goal: on track / behind by X per month. Suggest one kaizen move.
+2. Tie each goal to the user's top 3 priorities in Coach Memory (e.g. a race fund supports health). Goals that serve no priority are worth questioning, gently.
+3. For each goal: target, current, monthly pace needed = (target − current) ÷ months left; compare with the last 3 months' net.
+4. One line per goal: on track / behind by X per month. Suggest one kaizen move.
 
 ### 7 · Log a transaction ("I spent 350 on lunch")
 1. Find account and category ids (`list_accounts`, `list_categories`); ask only if ambiguous.
@@ -96,6 +98,8 @@ Use `hachibu-review` if installed (it runs the full combined review). Otherwise:
 - [references/kakeibo.md](references/kakeibo.md): read for the kakeibo method, money principles and laws, and how to phrase money coaching.
 - [references/analysis.md](references/analysis.md): read for analysis recipes (month-to-date pace, trends, anomalies, savings rate, subscriptions, like-for-like comparisons).
 - [references/budgebit-tools.md](references/budgebit-tools.md): read before any tool call you're unsure about.
+- [references/getting-budgebit.md](references/getting-budgebit.md): read when BudgeBit isn't connected.
+- [references/updates.md](references/updates.md): read when the user asks about updates, or when BudgeBit offers new money tools.
 
 ## End of every run
 If the user stated a money goal, rule, pay date or preference, offer in one line to save it with `hachibu-memory` (`## Money` section). Never save balances or account numbers; those live in BudgeBit.
