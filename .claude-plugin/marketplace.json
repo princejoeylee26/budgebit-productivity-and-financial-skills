@@ -5,13 +5,13 @@
   },
   "metadata": {
     "description": "hachibu: energy-first life coach and kakeibo money planner skills for BudgeBit users.",
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   "plugins": [
     {
       "name": "hachibu",
       "description": "Plan days and weeks around your energy at 80% capacity, track and analyse money kakeibo-style, run weekly reviews, and keep a coach memory inside BudgeBit.",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "source": "./",
       "strict": false,
       "license": "MIT",

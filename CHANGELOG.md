@@ -2,6 +2,10 @@
 
 All notable changes to hachibu. Versions follow [semver](https://semver.org): patch = wording, minor = new playbook/principle/workflow/eval, major = memory layout or behaviour users rely on (with a migration note).
 
+## [0.3.1] · 2026-11-08
+- BudgeBit tools reference catches up with the server: `list_tasks` takes `assigned_to_me`; `create_tasks` takes `assignee_id` and `repeat` + `repeat_every`; `update_task` takes `assignee_id`; daily caps for drafts (~200) and direct task writes (~300) are listed.
+- Why: the coach can filter to your own tasks, set up repeating tasks and plan around the real limits.
+
 ## [0.3.0] · 2026-11-08
 - **Works with any AI agent:** setup steps for Claude, Claude Code, Gemini app and CLI, Hermes, Codex, Cursor, Windsurf, VS Code and plain HTTP are in `docs/connect-agents.md`. They match BudgeBit's own Connections page.
 - `AGENTS.md` is now the single source of instructions. `CLAUDE.md` and `GEMINI.md` load it, and `.agents/skills` mirrors the skills for agents that look there.
