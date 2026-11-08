@@ -4,7 +4,7 @@ Setting up takes two steps for any agent:
 1. **Connect BudgeBit** so the agent can read your tasks and money. hachibu doesn't work without it.
 2. **Give the agent the hachibu skills.**
 
-BudgeBit's agent connections are a **Pro** feature. You'll find them in the BudgeBit app under **More › Connections › Connect an agent**. That page shows the exact address and steps for your agent, so always copy from there. The addresses below are placeholders.
+BudgeBit's agent connections work on **Free** (1 agent, 100 requests a day) and **Pro** (2 agents, 5,000 a day). You'll find them in the BudgeBit app under **More › Connections › Connect an agent**. That page shows the exact address and steps for your agent, so always copy from there. The addresses below are placeholders.
 
 ## Step 1 · Connect BudgeBit
 
@@ -27,7 +27,7 @@ BudgeBit's agent connections are a **Pro** feature. You'll find them in the Budg
   - `draft`: the `propose_*` tools. Drafts wait for your tap in **BudgeBit › Assistant**.
   - `tasks` (optional): direct task tools such as `create_tasks` and `update_task`, which save immediately.
 - For hachibu, turn on `read` and `draft`. Add `tasks` only if you want the coach to create lists and memory tasks without tapping each draft.
-- Limits: about 60 weighted calls per minute per key and 5,000 per day. The agent gets a clear "slow down" message if it goes over.
+- Limits: Free 1 connection, 30 weighted calls a minute and 100 a day; Pro 2 connections, 120 a minute per key and 5,000 a day. Days reset at midnight UTC. Over a limit, the agent gets a clear message with the limit, the reset time and (on Free) an upgrade link. On Free, a second connection is saved **paused** until you remove the first.
 - You can revoke a key anytime in More › Connections.
 
 ## Step 2 · Give the agent the skills

@@ -2,6 +2,11 @@
 
 All notable changes to hachibu. Versions follow [semver](https://semver.org): patch = wording, minor = new playbook/principle/workflow/eval, major = memory layout or behaviour users rely on (with a migration note).
 
+## [0.4.0] · 2026-11-08
+- **Works on BudgeBit Free:** agent connections are no longer Pro-only. Free connects 1 agent with 100 requests a day; Pro connects 2 with 5,000. Setup docs, the getting-BudgeBit steps and the tools reference say so.
+- **Limit errors:** the tools reference explains BudgeBit's structured limit errors (`API_DAILY`, `API_RATE`, `API_DRAFTS`, `API_WRITES`, paused connections) and how the coach handles them: stop, say what was reached and when it resets in local time, mention the upgrade once. New eval `15-limit-reached`.
+- Why: anyone can try hachibu for free, and the coach stays calm and honest when a daily budget runs out.
+
 ## [0.3.1] · 2026-11-08
 - BudgeBit tools reference catches up with the server: `list_tasks` takes `assigned_to_me`; `create_tasks` takes `assignee_id` and `repeat` + `repeat_every`; `update_task` takes `assignee_id`; daily caps for drafts (~200) and direct task writes (~300) are listed.
 - Why: the coach can filter to your own tasks, set up repeating tasks and plan around the real limits.
