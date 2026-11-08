@@ -1,0 +1,8 @@
+# Generic terms that should never appear in the public skills.
+# Put YOUR private terms (your name, employer, project names, places) in
+# scripts/blocklist.local.txt, which is gitignored, so the check protects you
+# without publishing them. One term per line, case-insensitive.
+password
+api_key
+secret_key
+iban

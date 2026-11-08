@@ -1,0 +1,18 @@
+# Personal data never enters this repository
+memory/
+*.local.md
+scripts/blocklist.local.txt
+exports/
+*.csv
+*.xlsx
+tasks*.json
+
+# Build outputs
+dist/
+*.zip
+
+# OS / editor
+.DS_Store
+__pycache__/
+.vscode/
+.idea/
