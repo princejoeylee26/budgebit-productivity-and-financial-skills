@@ -2,6 +2,11 @@
 
 All notable changes to hachibu. Versions follow [semver](https://semver.org): patch = wording, minor = new playbook/principle/workflow/eval, major = memory layout or behaviour users rely on (with a migration note).
 
+## [0.5.0] · 2026-11-10
+- **Custom fields:** the tools reference covers BudgeBit's custom fields: `list_task_lists` shows each list's fields, `list_tasks` shows values and filters with `field` + `field_value`, and `create_tasks` / `update_task` take `custom_fields` by field name and option label.
+- **Task timer:** new tools `start_timer` and `stop_timer` (Pro only, one timer at a time) and `time_tracked` (actual time by task and day). Weekly reviews use `time_tracked` for the priority balance when it has entries. New eval `16-timer-and-fields`.
+- Why: the coach can compare planned time with real time, and keep a list's fields up to date without guessing.
+
 ## [0.4.0] · 2026-11-08
 - **Works on BudgeBit Free:** agent connections are no longer Pro-only. Free connects 1 agent with 100 requests a day; Pro connects 2 with 5,000. Setup docs, the getting-BudgeBit steps and the tools reference say so.
 - **Limit errors:** the tools reference explains BudgeBit's structured limit errors (`API_DAILY`, `API_RATE`, `API_DRAFTS`, `API_WRITES`, paused connections) and how the coach handles them: stop, say what was reached and when it resets in local time, mention the upgrade once. New eval `15-limit-reached`.
