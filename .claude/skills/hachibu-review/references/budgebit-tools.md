@@ -30,6 +30,7 @@ Tool names: on Claude.ai they show as `Budgebit:<tool>`, in Claude Code as `mcp_
 | `list_task_lists` | lists with folder, open/overdue counts, ids, and each list's custom fields (e.g. `Stage (select: Idea, Draft)`, `Cost (money PHP)`) | none |
 | `list_tasks` | tasks by filter; one task in full with `task_id` | `due_after`, `due_before`, `include_done`, `overdue_only`, `list_id`, `search` (≤60 chars), `status`, `priority`, `tag`, `assigned_to_me` (assigned to the user, or unassigned and theirs), `field` + `field_value` (filter by a custom field, by name and label), `limit` ≤100. Rows show custom field values; one full task shows `time_tracked` |
 | `time_tracked` | the user's own timer time: total, by task, by day, and the running timer | `from`, `to` (YYYY-MM-DD, local; default this week), `task_id` |
+| `list_top_priorities` | the user's **Top 3** for the day and for that day's week (weeks start Sunday): position, task id, title, status, list, parent, `done`, `free_slots`. Empty = not picked yet. Private to the user; any plan | `date` (YYYY-MM-DD, default today) |
 | `get_task_attachment` | 10-min download link | `attachment_id` from a full task |
 | `propose_task` | draft new task or subtask | `title`, `list_id` or `list_name`, `due_date`, `start_date`, `start_time`, `due_time`, `description` (Markdown ≤20k), `priority`, `tags`, `parent_id`, `budget_id` |
 | `propose_task_update` | draft changes | `task_id` + only changed fields; `description` is the FULL new Markdown; `tags` is the full new list |
@@ -43,6 +44,7 @@ Direct task tools (only with the `tasks` scope; they **save immediately**, and n
 | `update_task` | change only the passed fields | `task_id`, `append_description` (adds Markdown at the end), `description` (replaces), dates/times (`"none"` clears), `status`, `priority`, `tags`, `assignee_id` (person id or `"none"`), `custom_fields` (only the passed fields change; `null` clears one). Completing a repeating task creates its next occurrence |
 | `start_timer` | start the user's task timer (**Pro only**; one runs at a time, so it stops the running one and says which; a To do task moves to In progress). On Free it returns a "Pro feature" message and saves nothing | `task_id` |
 | `stop_timer` | stop the running timer and say how long it ran; "No timer is running." otherwise | none |
+| `set_top_priorities` | set the user's Top 3 for a day or a week, most important first. **Replaces** that period's Top 3: tasks left out are only taken off the Top 3, never changed. `[]` clears. Any task the user can see works (also view-only). Confirm the picks with the user first | `period` (`day`/`week`), `date` (any day in the period, default today), `task_ids` (≤3) |
 | `add_task_attachment` | attach a file to a task | see the tool schema |
 
 Custom field values go by field name and option label: text (≤120 chars), number, money (major units, the field's currency), checkbox (`true`/`false`), select (an option label). An unknown field or option is refused with the valid choices, before anything is saved. Transaction fields can't be set by agents.
@@ -53,6 +55,7 @@ Patterns:
 - Today: `due_after = due_before = today`. Overdue: `overdue_only: true`.
 - History for patterns: `include_done: true`, windows of 7–14 days, `limit: 100`; repeat until each window shows all rows.
 - A time block is `start_time` + `due_time` on the same `due_date`.
+- Top 3: call `list_top_priorities` before planning. If the user already picked a Top 3, build the plan around it instead of choosing new ones; if it's empty, suggest 3 and, with the `tasks` scope and the user's OK, save them with `set_top_priorities` (BudgeBit shows them on its Dashboard and Calendar). Without the `tasks` scope, tell the user to add them in **BudgeBit › Tasks › Top 3**.
 - Real time spent (planned vs actual): `time_tracked` for the week. Only Pro users start timers; Free users may still have past entries. Don't start a timer unless the user asks.
 - Descriptions can hold plans, time windows and strategies. Open important tasks by `task_id`.
 

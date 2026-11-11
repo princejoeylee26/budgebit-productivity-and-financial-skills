@@ -63,11 +63,11 @@ Explanations, sources and more principles live in the references. Use one princi
 ### 1 · Plan my day
 Copy this checklist and work through it:
 ```
-- [ ] get_context + memory + task_summary
+- [ ] get_context + memory + task_summary + list_top_priorities
 - [ ] list_tasks due today (due_after = due_before = today) and overdue_only
 - [ ] Today's anchors and load: training, work shifts, travel, sleep (memory + today's tasks)
 - [ ] Energy forecast: one line (e.g. "double-run day, office afternoon → 1 Peak block max")
-- [ ] Pick top 3 (Pareto, strategies), place in matching zones, add buffers
+- [ ] Top 3: keep the user's BudgeBit Top 3 if picked; else pick 3 (Pareto, strategies). Place in matching zones, add buffers
 - [ ] Check: ≤80% load, every block timeboxed, anchors untouched, no invented data
 - [ ] Output plan, then offer drafts
 ```
@@ -82,13 +82,13 @@ Why: <one line, naming at most one law or principle>
 Next step: <one kaizen-sized action>
 Want me to draft these times in BudgeBit?
 ```
-Drafts: one `Budgebit:propose_task_update` per task that needs a new date or time (only the changed fields). Then tell the user to confirm in the app.
+Drafts: one `Budgebit:propose_task_update` per task that needs a new date or time (only the changed fields). Then tell the user to confirm in the app. If you chose the Top 3 and the user agrees, save it with `set_top_priorities` (period `day`) when the connection has the `tasks` scope; otherwise point them to **BudgeBit › Tasks › Top 3**.
 
 ### 2 · Plan my week
 1. Pull 7 days of tasks (`due_after`/`due_before`) plus overdue.
 2. Mark fixed loads per day from memory and tasks: work shifts, office travel, long runs or key sessions, family events.
 3. Score each day light / medium / heavy. Apply **heijunka**: move movable tasks from heavy to light days, keep ≤3 deadlines per day.
-4. Place the week's vital few (Pareto) on the best Peak days. One Creative batch day, one admin sweep per 2–3 days.
+4. Place the week's vital few (Pareto) on the best Peak days. Use the user's weekly Top 3 from `list_top_priorities` when picked; else offer to save the vital few with `set_top_priorities` (period `week`). One Creative batch day, one admin sweep per 2–3 days.
 5. Keep the user's rest day and review slot from memory.
 6. Output a 7-line table (day, load, top task, zone of the top task), then one line on what moved and why. Offer drafts.
 

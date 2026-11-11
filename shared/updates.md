@@ -2,7 +2,7 @@
 
 Read this when running an update check (onboarding, weekly review, or when the user asks "update hachibu" or "is there a new version"), or when this session shows BudgeBit tools that aren't in budgebit-tools.md. (Shared file: edit `shared/updates.md` and run `scripts/sync-shared.sh`.)
 
-**Installed version: 0.5.0**
+**Installed version: 0.6.0**
 Home: https://github.com/princejoeylee26/budgebit-productivity-and-financial-skills
 
 ## When to check

@@ -24,6 +24,7 @@ Copy and work through:
 - [ ] list_tasks include_done:true for this week (Mon–Sun), limit 100, paginate
 - [ ] Same for last week (for comparison)
 - [ ] time_tracked this week, if it has entries (actual time per task, for the priority balance)
+- [ ] list_top_priorities for each day reviewed (and the week): how many Top 3 picks got done, a strong signal of focus
 - [ ] task_summary (overdue now) and last week's overdue from Weekly log
 - [ ] Money line: budget_status this month (+ month_summary if month just ended)
 - [ ] Compute: done/planned by list, by energy type, by weekday; overdue trend

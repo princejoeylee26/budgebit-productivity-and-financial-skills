@@ -2,6 +2,10 @@
 
 All notable changes to hachibu. Versions follow [semver](https://semver.org): patch = wording, minor = new playbook/principle/workflow/eval, major = memory layout or behaviour users rely on (with a migration note).
 
+## [0.6.0] · 2026-11-11
+- **Top 3 priorities:** BudgeBit now has a Top 3 for the day and for the week (on its Dashboard and Calendar). New tools `list_top_priorities` (any connection) and `set_top_priorities` (`tasks` scope; replaces a period's Top 3, never changes the tasks). Day and week planning read the user's Top 3 first and build around it; when it's empty the coach suggests 3 and, with the user's OK, saves them. Weekly reviews count how many Top 3 picks got done. New eval `17-top-3`.
+- Why: the user's own picks are the best signal of what matters today, and a saved Top 3 stays visible in BudgeBit all day.
+
 ## [0.5.0] · 2026-11-10
 - **Custom fields:** the tools reference covers BudgeBit's custom fields: `list_task_lists` shows each list's fields, `list_tasks` shows values and filters with `field` + `field_value`, and `create_tasks` / `update_task` take `custom_fields` by field name and option label.
 - **Task timer:** new tools `start_timer` and `stop_timer` (Pro only, one timer at a time) and `time_tracked` (actual time by task and day). Weekly reviews use `time_tracked` for the priority balance when it has entries. New eval `16-timer-and-fields`.
