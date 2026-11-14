@@ -2,6 +2,10 @@
 
 All notable changes to hachibu. Versions follow [semver](https://semver.org): patch = wording, minor = new playbook/principle/workflow/eval, major = memory layout or behaviour users rely on (with a migration note).
 
+## [0.7.0] · 2026-11-14
+- **Habits:** BudgeBit now has a Habit Tracker (Check, Yes/No and Number habits, streaks, strength). New tools `list_habits` and `habit_history` (any connection) and `log_habit` (`tasks` scope; logs today or a past day, never creates or deletes habits). Day planning places open habits as anchors; weekly reviews add a habit line (this week %, strength). New eval `18-habits`.
+- Why: habits are the user's daily anchors, and logging "I drank 2 more glasses" by voice keeps the tracker honest without opening the app.
+
 ## [0.6.0] · 2026-11-11
 - **Top 3 priorities:** BudgeBit now has a Top 3 for the day and for the week (on its Dashboard and Calendar). New tools `list_top_priorities` (any connection) and `set_top_priorities` (`tasks` scope; replaces a period's Top 3, never changes the tasks). Day and week planning read the user's Top 3 first and build around it; when it's empty the coach suggests 3 and, with the user's OK, saves them. Weekly reviews count how many Top 3 picks got done. New eval `17-top-3`.
 - Why: the user's own picks are the best signal of what matters today, and a saved Top 3 stays visible in BudgeBit all day.

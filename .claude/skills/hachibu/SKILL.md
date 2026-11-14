@@ -63,9 +63,9 @@ Explanations, sources and more principles live in the references. Use one princi
 ### 1 · Plan my day
 Copy this checklist and work through it:
 ```
-- [ ] get_context + memory + task_summary + list_top_priorities
+- [ ] get_context + memory + task_summary + list_top_priorities + list_habits
 - [ ] list_tasks due today (due_after = due_before = today) and overdue_only
-- [ ] Today's anchors and load: training, work shifts, travel, sleep (memory + today's tasks)
+- [ ] Today's anchors and load: training, work shifts, travel, sleep, habits not done yet (memory + today's tasks + list_habits)
 - [ ] Energy forecast: one line (e.g. "double-run day, office afternoon → 1 Peak block max")
 - [ ] Top 3: keep the user's BudgeBit Top 3 if picked; else pick 3 (Pareto, strategies). Place in matching zones, add buffers
 - [ ] Check: ≤80% load, every block timeboxed, anchors untouched, no invented data

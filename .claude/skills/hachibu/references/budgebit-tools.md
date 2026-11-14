@@ -59,6 +59,20 @@ Patterns:
 - Real time spent (planned vs actual): `time_tracked` for the week. Only Pro users start timers; Free users may still have past entries. Don't start a timer unless the user asks.
 - Descriptions can hold plans, time windows and strategies. Open important tasks by `task_id`.
 
+## Habits
+BudgeBit's Habit Tracker: personal habits (only the user sees them) with three goal types: **Check** (done or not), **Yes/No** (answer a question; for quitting something, "No" can be the goal) and **Number** (an amount, at least or at most a target). Schedules: every day, set weekdays, every N days, N times a week or N times a month. Skipped days are rest days and keep the streak. Free has 5 active habits, Pro unlimited.
+| Tool | Use | Key params |
+|---|---|---|
+| `list_habits` | active habits: goal, the day's state (done, not done yet, missed, skipped, not due, open this period), what was logged, current and best streak, strength (0–100, consistency), this week's %. Footer lists archived habits | `date` (YYYY-MM-DD, default today) |
+| `habit_history` | one habit's days, newest first: state, value, note, plus when the goal changed | `habit_id`, `days` (1–90, default 30) |
+| `log_habit` | **`tasks` scope; saves right away.** Log today or a past day (never the future). Check: `done`; Yes/No: `answer`; Number: `amount` (sets the day) or `add` (adds to it); `skipped: true` for a rest day; `note` (≤200) | `habit_id` or `habit_name`, `date`, one of the value params |
+
+Agents never create, edit, archive or delete habits: point the user to **BudgeBit › Habit Tracker** for that.
+Patterns:
+- Planning a day: call `list_habits` and place habits that are "not done yet" as anchors (morning habits in the morning block, evening ones at night). They count toward load only when they take real time.
+- "I drank 2 more glasses", "did my stretch": `list_habits` → `log_habit` with the matching id, then say what was saved and the streak.
+- Reviews: `list_habits` (this week %, strength) and `habit_history` for habits that slipped. Praise consistency (strength) over perfect streaks.
+
 ## Money
 | Tool | Use | Key params |
 |---|---|---|
