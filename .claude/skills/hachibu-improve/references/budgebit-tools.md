@@ -30,7 +30,7 @@ Tool names: on Claude.ai they show as `Budgebit:<tool>`, in Claude Code as `mcp_
 | `list_task_lists` | lists with folder, open/overdue counts, ids, and each list's custom fields (e.g. `Stage (select: Idea, Draft)`, `Cost (money PHP)`) | none |
 | `list_tasks` | tasks by filter; one task in full with `task_id` | `due_after`, `due_before`, `include_done`, `overdue_only`, `list_id`, `search` (≤60 chars), `status`, `priority`, `tag`, `assigned_to_me` (assigned to the user, or unassigned and theirs), `field` + `field_value` (filter by a custom field, by name and label), `limit` ≤100. Rows show custom field values; one full task shows `time_tracked` |
 | `time_tracked` | the user's own timer time: total, by task, by day, and the running timer | `from`, `to` (YYYY-MM-DD, local; default this week), `task_id` |
-| `list_top_priorities` | the user's **Top 3** for the day and for that day's week (weeks start Sunday): position, task id, title, status, list, parent, `done`, `free_slots`. Empty = not picked yet. Private to the user; any plan | `date` (YYYY-MM-DD, default today) |
+| `list_top_priorities` | the user's **Top 3** for the day and for that day's week (weeks start Sunday): position, task id, title, status, list, parent, `done`, `free_slots`. A day's slots can also hold habits (`kind: habit`, `habit_id`, name, goal, `done` = today's goal met). Empty = not picked yet. Private to the user; any plan | `date` (YYYY-MM-DD, default today) |
 | `get_task_attachment` | 10-min download link | `attachment_id` from a full task |
 | `propose_task` | draft new task or subtask | `title`, `list_id` or `list_name`, `due_date`, `start_date`, `start_time`, `due_time`, `description` (Markdown ≤20k), `priority`, `tags`, `parent_id`, `budget_id` |
 | `propose_task_update` | draft changes | `task_id` + only changed fields; `description` is the FULL new Markdown; `tags` is the full new list |
@@ -44,7 +44,7 @@ Direct task tools (only with the `tasks` scope; they **save immediately**, and n
 | `update_task` | change only the passed fields | `task_id`, `append_description` (adds Markdown at the end), `description` (replaces), dates/times (`"none"` clears), `status`, `priority`, `tags`, `assignee_id` (person id or `"none"`), `custom_fields` (only the passed fields change; `null` clears one). Completing a repeating task creates its next occurrence |
 | `start_timer` | start the user's task timer (**Pro only**; one runs at a time, so it stops the running one and says which; a To do task moves to In progress). On Free it returns a "Pro feature" message and saves nothing | `task_id` |
 | `stop_timer` | stop the running timer and say how long it ran; "No timer is running." otherwise | none |
-| `set_top_priorities` | set the user's Top 3 for a day or a week, most important first. **Replaces** that period's Top 3: tasks left out are only taken off the Top 3, never changed. `[]` clears. Any task the user can see works (also view-only). Confirm the picks with the user first | `period` (`day`/`week`), `date` (any day in the period, default today), `task_ids` (≤3) |
+| `set_top_priorities` | set the user's Top 3 for a day or a week, most important first. **Replaces** that period's Top 3: tasks left out are only taken off the Top 3, never changed. `[]` clears. Any task the user can see works (also view-only). A day can also hold habits: `habit_ids` fill the slots after the tasks (3 in all); leave `habit_ids` out to keep the day's habit picks (if they don't fit, the error names them). Confirm the picks with the user first | `period` (`day`/`week`), `date` (any day in the period, default today), `task_ids` (≤3), `habit_ids` (day only, ≤3) |
 | `add_task_attachment` | attach a file to a task | see the tool schema |
 
 Custom field values go by field name and option label: text (≤120 chars), number, money (major units, the field's currency), checkbox (`true`/`false`), select (an option label). An unknown field or option is refused with the valid choices, before anything is saved. Transaction fields can't be set by agents.
@@ -60,17 +60,19 @@ Patterns:
 - Descriptions can hold plans, time windows and strategies. Open important tasks by `task_id`.
 
 ## Habits
-BudgeBit's Habit Tracker: personal habits (only the user sees them) with three goal types: **Check** (done or not), **Yes/No** (answer a question; for quitting something, "No" can be the goal) and **Number** (an amount, at least or at most a target). Schedules: every day, set weekdays, every N days, N times a week or N times a month. Skipped days are rest days and keep the streak. Free has 5 active habits, Pro unlimited.
+BudgeBit's Habit Tracker: personal habits (only the user sees them) with three goal types: **Check** (done or not), **Yes/No** (answer a question; for quitting something, "No" can be the goal) and **Number** (an amount, at least or at most a target). Schedules: every day, set weekdays, every N days, N times a week or N times a month. Skipped days are rest days and keep the streak. Free has 5 active habits, Pro up to 100.
 | Tool | Use | Key params |
 |---|---|---|
 | `list_habits` | active habits: goal, the day's state (done, not done yet, missed, skipped, not due, open this period), what was logged, current and best streak, strength (0–100, consistency), this week's %. Footer lists archived habits | `date` (YYYY-MM-DD, default today) |
 | `habit_history` | one habit's days, newest first: state, value, note, plus when the goal changed | `habit_id`, `days` (1–90, default 30) |
+| `propose_habit_log` | **`draft` scope; drafts only.** Same params as `log_habit`; the user confirms the check-in in **BudgeBit › Assistant**. Use it when the connection has no `tasks` scope | `habit_id` or `habit_name`, `date`, one of the value params |
 | `log_habit` | **`tasks` scope; saves right away.** Log today or a past day (never the future). Check: `done`; Yes/No: `answer`; Number: `amount` (sets the day) or `add` (adds to it); `skipped: true` for a rest day; `note` (≤200) | `habit_id` or `habit_name`, `date`, one of the value params |
 
 Agents never create, edit, archive or delete habits: point the user to **BudgeBit › Habit Tracker** for that.
 Patterns:
 - Planning a day: call `list_habits` and place habits that are "not done yet" as anchors (morning habits in the morning block, evening ones at night). They count toward load only when they take real time.
-- "I drank 2 more glasses", "did my stretch": `list_habits` → `log_habit` with the matching id, then say what was saved and the streak.
+- "I drank 2 more glasses", "did my stretch": `list_habits` → `log_habit` with the matching id, then say what was saved and the streak. Without the `tasks` scope, use `propose_habit_log` and tell the user to confirm it in **BudgeBit › Assistant**.
+- A habit that must happen today (the run before a big race, no smoking on a hard day) can be one of today's Top 3: `set_top_priorities` with `habit_ids`.
 - Reviews: `list_habits` (this week %, strength) and `habit_history` for habits that slipped. Praise consistency (strength) over perfect streaks.
 
 ## Money

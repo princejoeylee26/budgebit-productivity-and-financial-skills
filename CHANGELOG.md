@@ -2,6 +2,12 @@
 
 All notable changes to hachibu. Versions follow [semver](https://semver.org): patch = wording, minor = new playbook/principle/workflow/eval, major = memory layout or behaviour users rely on (with a migration note).
 
+## [0.8.0] · 2026-11-14
+- **Habits in Top 3:** a day's Top 3 can now hold habits. `list_top_priorities` lists them (`kind: habit`, goal, done) and `set_top_priorities` takes `habit_ids` for a day (after the tasks, 3 in all; left out = the day's habit picks stay).
+- **Draft a habit check-in:** new tool `propose_habit_log` (`draft` scope) drafts a check-in the user confirms in BudgeBit, for connections without the `tasks` scope. Eval `18-habits` covers both.
+- Pro's habit limit is now stated as up to 100.
+- Why: some days the one thing that must happen is a habit, and read-and-draft connections can now log habits with the user's OK.
+
 ## [0.7.0] · 2026-11-14
 - **Habits:** BudgeBit now has a Habit Tracker (Check, Yes/No and Number habits, streaks, strength). New tools `list_habits` and `habit_history` (any connection) and `log_habit` (`tasks` scope; logs today or a past day, never creates or deletes habits). Day planning places open habits as anchors; weekly reviews add a habit line (this week %, strength). New eval `18-habits`.
 - Why: habits are the user's daily anchors, and logging "I drank 2 more glasses" by voice keeps the tracker honest without opening the app.
